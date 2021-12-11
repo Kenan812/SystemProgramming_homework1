@@ -42,6 +42,8 @@
             this.resumePrimeNumbersButton = new System.Windows.Forms.Button();
             this.restartPrimeButton = new System.Windows.Forms.Button();
             this.restartFibonacciButton = new System.Windows.Forms.Button();
+            this.pauseFibonacciButton = new System.Windows.Forms.Button();
+            this.resumeFibonacciButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -166,7 +168,7 @@
             // 
             // restartFibonacciButton
             // 
-            this.restartFibonacciButton.Location = new System.Drawing.Point(186, 375);
+            this.restartFibonacciButton.Location = new System.Drawing.Point(445, 375);
             this.restartFibonacciButton.Name = "restartFibonacciButton";
             this.restartFibonacciButton.Size = new System.Drawing.Size(112, 34);
             this.restartFibonacciButton.TabIndex = 13;
@@ -174,11 +176,33 @@
             this.restartFibonacciButton.UseVisualStyleBackColor = true;
             this.restartFibonacciButton.Click += new System.EventHandler(this.restartFibonacciButton_Click);
             // 
+            // pauseFibonacciButton
+            // 
+            this.pauseFibonacciButton.Location = new System.Drawing.Point(188, 375);
+            this.pauseFibonacciButton.Name = "pauseFibonacciButton";
+            this.pauseFibonacciButton.Size = new System.Drawing.Size(112, 34);
+            this.pauseFibonacciButton.TabIndex = 14;
+            this.pauseFibonacciButton.Text = "Pause";
+            this.pauseFibonacciButton.UseVisualStyleBackColor = true;
+            this.pauseFibonacciButton.Click += new System.EventHandler(this.pauseFibonacciButton_Click);
+            // 
+            // resumeFibonacciButton
+            // 
+            this.resumeFibonacciButton.Location = new System.Drawing.Point(314, 375);
+            this.resumeFibonacciButton.Name = "resumeFibonacciButton";
+            this.resumeFibonacciButton.Size = new System.Drawing.Size(112, 34);
+            this.resumeFibonacciButton.TabIndex = 15;
+            this.resumeFibonacciButton.Text = "Resume";
+            this.resumeFibonacciButton.UseVisualStyleBackColor = true;
+            this.resumeFibonacciButton.Click += new System.EventHandler(this.resumeFibonacciButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 450);
+            this.Controls.Add(this.resumeFibonacciButton);
+            this.Controls.Add(this.pauseFibonacciButton);
             this.Controls.Add(this.restartFibonacciButton);
             this.Controls.Add(this.restartPrimeButton);
             this.Controls.Add(this.resumePrimeNumbersButton);
@@ -216,6 +240,8 @@
         private System.Windows.Forms.Button resumePrimeNumbersButton;
         private System.Windows.Forms.Button restartPrimeButton;
         private System.Windows.Forms.Button restartFibonacciButton;
+        private System.Windows.Forms.Button pauseFibonacciButton;
+        private System.Windows.Forms.Button resumeFibonacciButton;
     }
 }
 

@@ -15,6 +15,8 @@ namespace SystemProgramming_homework1
         private bool continuePrime = true;
         private bool continueFibonacci = true;
 
+        //System.Threading.Timer timer = new System.Threading.Timer(;
+
         public Form1()
         {
             InitializeComponent();
@@ -47,9 +49,16 @@ namespace SystemProgramming_homework1
 
         private void restartPrimeButton_Click(object sender, EventArgs e)
         {
-            primeNumbersTextBox.Text = String.Empty;
-            ThreadPool.QueueUserWorkItem(PrintPrimeNumbers);
-            stopPrime = false;
+            if (stopPrime)
+            {
+                primeNumbersTextBox.Text = String.Empty;
+                ThreadPool.QueueUserWorkItem(PrintPrimeNumbers);
+                stopPrime = false;
+            }
+            else
+            {
+                MessageBox.Show("Process must be stopped");
+            }
         }
 
 
@@ -70,9 +79,26 @@ namespace SystemProgramming_homework1
 
         private void restartFibonacciButton_Click(object sender, EventArgs e)
         {
-            fibonacciNumbersTextBox.Text = String.Empty;
-            ThreadPool.QueueUserWorkItem(PrintFibonacci);
-            stopFibonacci = false;
+            if (stopFibonacci)
+            {
+                fibonacciNumbersTextBox.Text = String.Empty;
+                ThreadPool.QueueUserWorkItem(PrintFibonacci);
+                stopFibonacci = false;
+            }
+            else
+            {
+                MessageBox.Show("Process must be stopped");
+            }
+        }
+
+        private void pauseFibonacciButton_Click(object sender, EventArgs e)
+        {
+            continueFibonacci = false;
+        }
+
+        private void resumeFibonacciButton_Click(object sender, EventArgs e)
+        {
+            continueFibonacci = true;
         }
 
 
@@ -96,6 +122,8 @@ namespace SystemProgramming_homework1
                 prevprev = prev;
                 prev = next;
                 Thread.Sleep(750);
+
+                if (!continueFibonacci) StopFibonacciProcess();
             }
         }
 
@@ -143,6 +171,9 @@ namespace SystemProgramming_homework1
                             primeNumbersTextBox.Text += $"{i} ";
                             Thread.Sleep(650);
                         }
+
+                        if (!continuePrime) StopPrimeProcess();
+
                     }
                 }
 
@@ -157,6 +188,8 @@ namespace SystemProgramming_homework1
                             primeNumbersTextBox.Text += $"{i} ";
                             Thread.Sleep(650);
                         }
+
+                        if (!continuePrime) StopPrimeProcess();
                     }
                 }
             }
@@ -182,7 +215,18 @@ namespace SystemProgramming_homework1
             return prevprev + prev;
         }
 
-        
- 
+
+        private void StopPrimeProcess()
+        {
+            while (!continuePrime) { Thread.Sleep(1000); }
+        }
+
+
+        private void StopFibonacciProcess()
+        {
+            while(!continueFibonacci) { Thread.Sleep(1000); }
+        }
+
+
     }
 }
